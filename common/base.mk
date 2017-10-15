@@ -149,7 +149,7 @@ BT := javax.btobex
 BT += libattrib_static
 BT += hcidump.sh
 BT += libbt-vendor
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/marlin/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zuk/z2_plus/bluetooth
 
 #C2DColorConvert
 C2DCC := libc2dcolorconvert
@@ -477,7 +477,7 @@ LIBQDUTILS := libqdutils
 LIBQDMETADATA := libqdMetaData
 
 #LIBPOWER
-LIBPOWER := power.marlin
+LIBPOWER := power.8996
 LIBPOWER += android.hardware.power@1.0-impl
 
 #LLVM for RenderScript
@@ -832,11 +832,11 @@ PRODUCT_COPY_FILES += \
 
 # enable overlays to use our version of
 # source/resources etc.
-#DEVICE_PACKAGE_OVERLAYS += device/google/marlin/common/device/overlay
-#PRODUCT_PACKAGE_OVERLAYS += device/google/marlin/common/product/overlay
+#DEVICE_PACKAGE_OVERLAYS += device/zuk/z2_plus/common/device/overlay
+#PRODUCT_PACKAGE_OVERLAYS += device/zuk/z2_plus/common/product/overlay
 
 # include additional build utilities
--include device/google/marlin/common/utils.mk
+-include device/zuk/z2_plus/common/utils.mk
 
 #Enabling Ring Tones
 #include frameworks/base/data/sounds/OriginalAudio.mk

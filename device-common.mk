@@ -14,40 +14,31 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL marlin and sailfish devices
+# This file includes all definitions that apply to ALL z2_plus devices
 #
 # Everything in this directory will become public
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/google/marlin-kernel/Image.lz4-dtb
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
+PRODUCT_SHIPPING_API_LEVEL := 24
 
-PRODUCT_SHIPPING_API_LEVEL := 25
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-DEVICE_PACKAGE_OVERLAYS += device/google/marlin/overlay
+DEVICE_PACKAGE_OVERLAYS += device/zuk/z2_plus/overlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
 # Input device files
 PRODUCT_COPY_FILES += \
-    device/google/marlin/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
-    device/google/marlin/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl \
-    device/google/marlin/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
-    device/google/marlin/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
-    device/google/marlin/synaptics_dsxv26.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/synaptics_dsxv26.idc \
-    device/google/marlin/vr-virtual-touchpad-1.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vr-virtual-touchpad-1.idc
+    device/zuk/z2_plus/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
+    device/zuk/z2_plus/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl \
+    device/zuk/z2_plus/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
+    device/zuk/z2_plus/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
+    device/zuk/z2_plus/synaptics_dsxv26.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/synaptics_dsxv26.idc \
+    device/zuk/z2_plus/vr-virtual-touchpad-1.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vr-virtual-touchpad-1.idc
 
 # copy customized media_profiles and media_codecs xmls for msm8996
 PRODUCT_COPY_FILES += \
-    device/google/marlin/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
-    device/google/marlin/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
-    device/google/marlin/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
+    device/zuk/z2_plus/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
+    device/zuk/z2_plus/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    device/zuk/z2_plus/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -55,7 +46,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/google/marlin/common/common64.mk)
+$(call inherit-product, device/zuk/z2_plus/common/common64.mk)
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
@@ -91,18 +82,18 @@ PRODUCT_PACKAGES += \
 # Audio configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-    device/google/marlin/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
-    device/google/marlin/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
-    device/google/marlin/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
-    device/google/marlin/mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha_t50.xml \
-    device/google/marlin/aanc_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/aanc_tuning_mixer.txt \
-    device/google/marlin/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
-    device/google/marlin/sound_trigger_mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_tasha_t50.xml \
-    device/google/marlin/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
-    device/google/marlin/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
-    device/google/marlin/audio_platform_info_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_tasha_t50.xml \
-    device/google/marlin/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    device/google/marlin/audio_policy_volumes_drc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_drc.xml \
+    device/zuk/z2_plus/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+    device/zuk/z2_plus/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
+    device/zuk/z2_plus/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    device/zuk/z2_plus/mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha_t50.xml \
+    device/zuk/z2_plus/aanc_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/aanc_tuning_mixer.txt \
+    device/zuk/z2_plus/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+    device/zuk/z2_plus/sound_trigger_mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_tasha_t50.xml \
+    device/zuk/z2_plus/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
+    device/zuk/z2_plus/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+    device/zuk/z2_plus/audio_platform_info_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_tasha_t50.xml \
+    device/zuk/z2_plus/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    device/zuk/z2_plus/audio_policy_volumes_drc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_drc.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
@@ -125,7 +116,7 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service \
     android.hardware.vr@1.0-service \
 
-PRODUCT_PROPERTY_OVERRIDES += ro.hardware.power=marlin
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.power=z2_plus
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -142,7 +133,7 @@ PRODUCT_PACKAGES += \
 
 # Usb HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.marlin
+    android.hardware.usb@1.0-service.z2_plus
 
 # Audio effects
 PRODUCT_PACKAGES += \
@@ -175,10 +166,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
-    device/google/marlin/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf     \
-    device/google/marlin/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf     \
-    device/google/marlin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_cfg.dat \
-    device/google/marlin/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+    device/zuk/z2_plus/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf     \
+    device/zuk/z2_plus/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf     \
+    device/zuk/z2_plus/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_cfg.dat \
+    device/zuk/z2_plus/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
 # MIDI feature
 PRODUCT_COPY_FILES += \
@@ -201,7 +192,7 @@ PRODUCT_COPY_FILES += \
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.marlin
+    android.hardware.dumpstate@1.0-service.z2_plus
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
@@ -239,7 +230,7 @@ PRODUCT_COPY_FILES += \
 
 # For SPN display
 PRODUCT_COPY_FILES += \
-    device/google/marlin/spn-conf.xml:system/etc/spn-conf.xml
+    device/zuk/z2_plus/spn-conf.xml:system/etc/spn-conf.xml
 
 # new gatekeeper HAL
 PRODUCT_PACKAGES += \
@@ -269,7 +260,7 @@ PRODUCT_PACKAGES += \
 endif
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+    device/zuk/z2_plus/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/624000.ufshc/by-name/system
 
@@ -279,19 +270,19 @@ PRODUCT_COPY_FILES += \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
-    device/google/marlin/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+    device/zuk/z2_plus/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # init scripts
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rc \
-    device/google/marlin/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.usb.rc \
-    device/google/marlin/init.common.nanohub.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.nanohub.rc \
-    device/google/marlin/ueventd.common.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
-    device/google/marlin/init.radio.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.radio.sh \
-    device/google/marlin/init.power.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.power.sh \
-    device/google/marlin/init.mid.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.mid.sh \
-    device/google/marlin/init.foreground.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.foreground.sh \
-    device/google/marlin/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
+    device/zuk/z2_plus/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rc \
+    device/zuk/z2_plus/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.usb.rc \
+    device/zuk/z2_plus/init.common.nanohub.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.nanohub.rc \
+    device/zuk/z2_plus/ueventd.common.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
+    device/zuk/z2_plus/init.radio.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.radio.sh \
+    device/zuk/z2_plus/init.power.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.power.sh \
+    device/zuk/z2_plus/init.mid.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.mid.sh \
+    device/zuk/z2_plus/init.foreground.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.foreground.sh \
+    device/zuk/z2_plus/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -303,7 +294,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Write Manufacturer & Model information in created media files.
 # IMPORTANT: ONLY SET THIS PROPERTY TO TRUE FOR PUBLIC DEVICES
-ifneq ($(filter aosp_sailfish% sailfish% aosp_marlin% marlin%, $(TARGET_PRODUCT)),)
+ifneq ($(filter aosp_z2_plus% z2_plus%, $(TARGET_PRODUCT)),)
 PRODUCT_PROPERTY_OVERRIDES += \
     media.recorder.show_manufacturer_and_model=true
 else
@@ -381,14 +372,14 @@ INIT_COMMON_DIAG_RC := $(TARGET_COPY_OUT_VENDOR)/etc/init/init.diag.rc
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.diag.rc.userdebug:$(INIT_COMMON_DIAG_RC)
+    device/zuk/z2_plus/init.common.diag.rc.userdebug:$(INIT_COMMON_DIAG_RC)
 
 # Subsystem ramdump
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.enable_ramdumps=1
 else
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.diag.rc.user:$(INIT_COMMON_DIAG_RC)
+    device/zuk/z2_plus/init.common.diag.rc.user:$(INIT_COMMON_DIAG_RC)
 endif
 
 # Subsystem silent restart
@@ -396,8 +387,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=venus,AR6320,slpi,modem,adsp
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/thermal-engine-marlin.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf \
-    device/google/marlin/thermal-engine-marlin-vr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-vr.conf
+    device/zuk/z2_plus/thermal-engine-z2_plus.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf \
+    device/zuk/z2_plus/thermal-engine-z2_plus-vr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-vr.conf
 
 $(call inherit-product-if-exists, hardware/qcom/msm8996/msm8996.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8996/msm8996-gpu-vendor.mk)
@@ -440,7 +431,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Script that copies preloads directory from system_other to data partition
 PRODUCT_COPY_FILES += \
-    device/google/marlin/preloads_copy.sh:system/bin/preloads_copy.sh
+    device/zuk/z2_plus/preloads_copy.sh:system/bin/preloads_copy.sh
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -473,7 +464,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.marlin \
+    android.hardware.vibrator@1.0-service.z2_plus \
 
 # VR
 PRODUCT_PACKAGES += \
@@ -516,8 +507,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
-    device/google/marlin/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn551_fw.so
+    device/zuk/z2_plus/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
+    device/zuk/z2_plus/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn551_fw.so
 
 # Bootloader HAL used for A/B updates.
 PRODUCT_PACKAGES += \
@@ -549,15 +540,15 @@ $(call inherit-product, build/target/product/verity.mk)
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := \
-    device/google/marlin/recovery.wipe.common
+    device/zuk/z2_plus/recovery.wipe.common
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
-    device/google/marlin/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
+    device/zuk/z2_plus/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
 
 # Default permission grant exceptions
 PRODUCT_COPY_FILES += \
-    device/google/marlin/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
+    device/zuk/z2_plus/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
 
 # A/B OTA dexopt package
 PRODUCT_PACKAGES += otapreopt_script
@@ -593,15 +584,8 @@ endif
 PRODUCT_PACKAGES += \
     toybox_static
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-ifeq (,$(filter aosp_marlin aosp_sailfish, $(TARGET_PRODUCT)))
-PRODUCT_PACKAGES += \
-    NexusLogger
-endif # filter it out for aosp build
-endif
-
 # b/30349163
-# Set Marlin/Sailfish default log size on userdebug/eng build to 1M
+# Set z2_plus default log size on userdebug/eng build to 1M
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=1M
 endif
@@ -613,11 +597,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
-    device/google/marlin/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
+    device/zuk/z2_plus/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
-    device/google/marlin/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+    device/zuk/z2_plus/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.vndk.version=26.1.0 \

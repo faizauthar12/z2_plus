@@ -1,5 +1,5 @@
 # Read ro.boot.hardware.sku. Needed by Regulatory Info screen of Settings app.
-# Normally this property is a default_prop which is readable by anybody, but on marlin/sailfish
+# Normally this property is a default_prop which is readable by anybody, but on z2_plus
 # init_mid needs to be able to set this property and thus this property had to be relabelled as
 # a new type, hw_sku_pop. This in turn requires us to grant system_app read access to this property
 # label.

@@ -14,22 +14,22 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL marlin devices
+# This file includes all definitions that apply to ALL msm8996 devices
 #
 # Everything in this directory will become public
 
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := 560dpi
+PRODUCT_AAPT_PREF_CONFIG := 480dpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
--include device/google/marlin/device-common.mk
+-include device/zuk/z2_plus/device-common.mk
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += device/google/marlin/marlin/overlay
+DEVICE_PACKAGE_OVERLAYS += device/zuk/z2_plus/z2_plus/overlay
 
 # display
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=560
+    ro.sf.lcd_density=480
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -42,33 +42,26 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.path_cache_size=32
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.marlin \
-    device/google/marlin/init.recovery.common.rc:root/init.recovery.marlin.rc
+    device/zuk/z2_plus/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.z2_plus \
+    device/zuk/z2_plus/init.recovery.common.rc:root/init.recovery.z2_plus.rc
 
 # Sensor packages
 PRODUCT_PACKAGES += \
-    sensors.marlin \
-    activity_recognition.marlin
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    nfc_nci.marlin
-
-PRODUCT_COPY_FILES += \
-    device/google/marlin/nfc/libnfc-nxp.marlin.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+    sensors.z2_plus \
+    activity_recognition.z2_plus
 
 # Led packages
 PRODUCT_PACKAGES += \
-    lights.marlin
+    lights.msm8996
 
 # Thermal packages
 PRODUCT_PACKAGES += \
-    thermal.marlin
+    thermal.msm8996
 
 # VR packages
 PRODUCT_PACKAGES += \
-    vr.marlin
+    vr.msm8996
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    fingerprint.marlin
+    fingerprint.msm8996

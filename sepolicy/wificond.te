@@ -1,4 +1,4 @@
-# Temporarily allow wificond to read and execute /vendor libs only for marlin/sailfish.
+# Temporarily allow wificond to read and execute /vendor libs only for z2_plus.
 # TODO: b/36697996
 # wificond depends on /vendor/lib64/libwpa_client.so
 allow wificond vendor_file:dir { getattr search };
